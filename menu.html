@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú | Sabor a la Parrilla BBQ</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="reveal">
+    <div class="logo">
+      <img src="img/logo.png" alt="Logo Sabor a la Parrilla BBQ" />
+      SABOR A LA PARRILLA BBQ
+    </div>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="menu.html" class="active">Menú</a>
+      <a href="promociones.html">Promociones</a>
+      <a href="equipo.html">Equipo</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- ===== BANNER ===== -->
+  <section class="banner reveal">
+    <h1>NUESTRO MENÚ</h1>
+    <p>El auténtico sabor de la parrilla</p>
+  </section>
+
+  <!-- ===== ESPECIALIDADES DE LA CASA ===== -->
+  <section class="seccion reveal">
+    <h2>Especialidades de la Casa</h2>
+    <div class="menu-grid">
+
+      <div class="menu-card">
+        <img src="img/platillo carne.png" alt="Carne Asada">
+        <div class="menu-body">
+          <h3>Carne Asada</h3>
+          <p>Arroz, chimol y chorizo.</p>
+          <span class="precio">$5.00</span>
+          <button class="agregar-btn" onclick="agregarCarrito('Carne Asada',5)">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="img/platillo costilla.png" alt="Costillas BBQ">
+        <div class="menu-body">
+          <h3>Costillas BBQ</h3>
+          <p>Arroz, chimol, chorizo y salsa BBQ.</p>
+          <span class="precio">$7.00</span>
+          <button class="agregar-btn" onclick="agregarCarrito('Costillas BBQ',7)">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="img/combo platillo.png" alt="Combo Parrillero">
+        <div class="menu-body">
+          <h3>Combo Parrillero</h3>
+          <p>Variedad de carnes y acompañamientos.</p>
+          <span class="precio">$8.50</span>
+          <button class="agregar-btn" onclick="agregarCarrito('Combo Parrillero',8.5)">Agregar al carrito</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== NUEVA SECCIÓN: TAMALES ===== -->
+  <section class="seccion reveal">
+    <h2>🌽 Tamales</h2>
+    <p class="lead">Tamales preparados al momento con receta tradicional.</p>
+    <div class="menu-grid">
+
+      <div class="menu-card">
+        <img src="img/tamal de pollo.jpg" alt="Tamal de Pollo">
+        <div class="menu-body">
+          <h3>Tamal de Pollo</h3>
+          <p>Tamal tradicional de pollo con recado especial.</p>
+          <span class="precio">$2.00</span>
+          <button class="agregar-btn" onclick="agregarCarrito('Tamal de Pollo',2)">Agregar al carrito</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== BEBIDAS ===== -->
+  <section class="seccion reveal">
+    <h2>Bebidas</h2>
+    <div class="menu-grid">
+
+      <div class="menu-card">
+        <img src="img/coca cola.jpg" alt="Coca-Cola">
+        <div class="menu-body">
+          <h3>Coca-Cola</h3>
+          <span class="precio">$1.00</span>
+          <button class="agregar-btn" onclick="agregarCarrito('Coca-Cola',1)">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="img/sprite.jpg" alt="Sprite">
+        <div class="menu-body">
+          <h3>Sprite</h3>
+          <span class="precio">$1.00</span>
+          <button class="agregar-btn" onclick="agregarCarrito('Sprite',1)">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="img/fanta.jpg" alt="Fanta">
+        <div class="menu-body">
+          <h3>Fanta</h3>
+          <span class="precio">$1.00</span>
+          <button class="agregar-btn" onclick="agregarCarrito('Fanta',1)">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img src="img/cremasoda.jpg" alt="Crema Soda">
+        <div class="menu-body">
+          <h3>Crema Soda</h3>
+          <span class="precio">$0.75</span>
+          <button class="agregar-btn" onclick="agregarCarrito('Crema Soda',0.75)">Agregar al carrito</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== NUEVA SECCIÓN: CAFÉ ===== -->
+  <section class="seccion reveal">
+    <h2>☕ Café</h2>
+    <p class="lead">Café caliente preparado al momento para acompañar tus alimentos.</p>
+    <div class="menu-grid">
+
+      <div class="menu-card">
+        <img src="img/cafe.png" alt="Café Negro">
+        <div class="menu-body">
+          <h3>Café Negro</h3>
+          <p>Café tradicional recién colado.</p>
+          <span class="precio">$0.75</span>
+          <button class="agregar-btn" onclick="agregarCarrito('Café Negro',0.75)">Agregar al carrito</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== CARRITO DE COMPRAS ===== -->
+  <section class="carrito-panel reveal">
+    <h2>Carrito de Compras</h2>
+    <div id="lista-carrito" class="lista-carrito"></div>
+    <div class="carrito-total">
+      <p>Total: $<span id="total">0.00</span></p>
+    </div>
+    <div class="carrito-botones">
+      <button onclick="abrirFormularioEnvio()">Enviar Factura</button>
+      <button onclick="imprimirFactura()">Imprimir Factura</button>
+    </div>
+  </section>
+
+  <!-- ===== FACTURA ===== -->
+  <div class="factura" id="factura">
+    <h2>Factura</h2>
+    <div id="contenido-factura"></div>
+    <h3>Total: $<span id="total-factura">0.00</span></h3>
+    <button class="cerrar-btn" onclick="cerrarFactura()">Cerrar</button>
+  </div>
+
+  <!-- ===== MODAL ENVÍO ===== -->
+  <div class="modal-envio" id="modal-envio">
+    <div class="form-envio">
+      <h2>Enviar Factura por Email</h2>
+      <div class="form-group">
+        <label>Nombre del Cliente:</label>
+        <input type="text" id="cliente-nombre" placeholder="Ej: Juan Pérez">
+      </div>
+      <div class="form-group">
+        <label>Email del Cliente:</label>
+        <input type="email" id="cliente-email" placeholder="Ej: juan@example.com">
+      </div>
+      <div class="form-group">
+        <label>Mensaje (Opcional):</label>
+        <textarea id="cliente-mensaje" placeholder="Escribe un mensaje personalizado..."></textarea>
+      </div>
+      <div class="form-botones">
+        <button class="enviar-btn" onclick="enviarFacturaEmail()">Enviar</button>
+        <button class="cerrar-form-btn" onclick="cerrarFormularioEnvio()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="reveal">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>🔥 Sabor a la Parrilla BBQ</h3>
+        <p>El auténtico sabor de la parrilla, costillas BBQ y carnes preparadas con pasión.</p>
+      </div>
+      <div class="footer-section">
+        <h3>📍 Ubicación</h3>
+        <p>Instituto Nacional de Ciudad Delgado</p>
+        <p>San Salvador</p>
+      </div>
+      <div class="footer-section">
+        <h3>📱 Redes Sociales</h3>
+        <p>Facebook: Sabor a la Parrilla BBQ</p>
+        <p>Instagram: @saboralaparrillabbq</p>
+        <p>WhatsApp: 7777-2026</p>
+      </div>
+      <div class="footer-section">
+        <h3>🕒 Horario</h3>
+        <p>7:00 AM - 2:00 PM</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Sabor a la Parrilla BBQ | Todos los derechos reservados</p>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/menu.js"></script>
+
+</body>
+</html>

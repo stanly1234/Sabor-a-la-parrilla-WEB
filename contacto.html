@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Configuración básica de la página de contacto -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto | Sabor a la Parrilla BBQ</title>
+  <!-- Vinculamos el CSS principal -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <!-- EmailJS para enviar mensajes de contacto -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+  <!-- HEADER: El encabezado con el logo y navegación -->
+  <header class="reveal"><div class="logo"><img src="img/logo.png" alt="Logo Sabor a la Parrilla BBQ" />SABOR A LA PARRILLA BBQ</div><nav>
+<a href="index.html" class="">Inicio</a>
+<a href="nosotros.html" class="">Nosotros</a>
+<a href="menu.html" class="">Menú</a>
+<a href="promociones.html" class="">Promociones</a>
+<a href="equipo.html" class="">Equipo</a>
+<a href="contacto.html" class="active">Contacto</a>
+</nav></header>
+
+  <section class="banner reveal">
+    <img src="img/banner.png" alt="Banner" />
+    <h1>Contáctanos</h1>
+    <p>Estamos listos para atenderte</p>
+  </section>
+
+  <!-- SECCIÓN CONTACTO - Aquí los clientes pueden enviarnos mensajes -->
+  <section class="contacto reveal">
+    <!-- INFORMACIÓN DE CONTACTO - Datos para que nos encuentren -->
+    <div class="info">
+      <h2>Información</h2>
+      <p>📍 Ciudad Delgado, San Salvador</p>
+      <p>📞 +503 7000-0000</p>
+      <p>📧 saboralaparrillabbq@gmail.com</p>
+      <p>🕒 8:00 AM - 8:00 PM</p>
+    </div>
+    <!-- FORMULARIO DE CONTACTO - Para que los clientes envíen mensajes -->
+    <div class="formulario">
+      <h2>Enviar Mensaje</h2>
+      <form id="formContacto">
+        <input type="text" id="contactNombre" placeholder="Nombre" required />
+        <input type="email" id="contactCorreo" placeholder="Correo" required />
+        <textarea id="contactMensaje" placeholder="Mensaje" required></textarea>
+        <button type="submit" id="btnEnviar">Enviar</button>
+      </form>
+      <!-- Mensajes de confirmación/error -->
+      <div id="contactoConfirmacion" style="display:none; color:#4caf50; margin-top:16px; text-align:center; font-weight:600;">
+        ✅ ¡Mensaje enviado con éxito!
+      </div>
+      <div id="contactoError" style="display:none; color:#f44336; margin-top:16px; text-align:center; font-weight:600;">
+        ❌ Error al enviar. Intenta de nuevo.
+      </div>
+    </div>
+  </section>
+
+  <section class="redes reveal">
+    <h2>Síguenos</h2>
+    <!-- Nuestras redes sociales donde puedes encontrarnos -->
+    <div class="social">
+      <img src="img/facebook.png" alt="Facebook" />
+      <img src="img/instragram.jpg" alt="Instagram" />
+      <img src="img/x.png" alt="X" />
+      <img src="img/whatsapp.jpg" alt="WhatsApp" />
+    </div>
+  </section>
+
+  <footer class="reveal"><div class="footer-container"><div class="footer-section"><h3>🔥 Sabor a la Parrilla BBQ</h3><p>El auténtico sabor de la parrilla, costillas BBQ y carnes preparadas con pasión.</p></div><div class="footer-section"><h3>📍 Ubicación</h3><p>Instituto Nacional de Ciudad Delgado</p><p>San Salvador</p></div><div class="footer-section"><h3>📱 Redes Sociales</h3><p>Facebook: Sabor a la Parrilla BBQ</p><p>Instagram: @saboralaparrillabbq</p><p>WhatsApp: 7777-2026</p></div><div class="footer-section"><h3>🕒 Horario</h3><p>7:00 AM - 2:00 PM</p></div></div><div class="footer-bottom"><p>© 2026 Sabor a la Parrilla BBQ | Todos los derechos reservados</p></div></footer>
+
+  <!-- ========================================================== -->
+  <!-- EMAILJS - CONFIGURACIÓN COMPLETA (YA FUNCIONAL)            -->
+  <!-- ========================================================== -->
+  <script>
+    // Inicializar EmailJS con tu Public Key
+    (function() {
+      emailjs.init("NDt0z4tvEF78mHp2S");
+    })();
+
+    // Tus IDs de EmailJS
+    const SERVICE_ID = "service_i43quzx";
+    const TEMPLATE_ID = "template_4i3wc7n"; // <-- ¡PON AQUÍ TU TEMPLATE ID!
+
+    // Esperar a que el DOM esté listo
+    document.addEventListener("DOMContentLoaded", function() {
+      const form = document.getElementById("formContacto");
+      const btnEnviar = document.getElementById("btnEnviar");
+      const confirmacion = document.getElementById("contactoConfirmacion");
+      const errorDiv = document.getElementById("contactoError");
+
+      // Ocultar mensajes al cargar
+      confirmacion.style.display = "none";
+      errorDiv.style.display = "none";
+
+      // Evento submit del formulario
+      form.addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        // Ocultar mensajes anteriores
+        confirmacion.style.display = "none";
+        errorDiv.style.display = "none";
+
+        // Deshabilitar botón mientras se envía
+        btnEnviar.disabled = true;
+        btnEnviar.textContent = "Enviando...";
+
+        // Obtener valores
+        const nombre = document.getElementById("contactNombre").value.trim();
+        const correo = document.getElementById("contactCorreo").value.trim();
+        const mensaje = document.getElementById("contactMensaje").value.trim();
+
+        // Validar campos vacíos
+        if (!nombre || !correo || !mensaje) {
+          errorDiv.textContent = "❌ Todos los campos son obligatorios";
+          errorDiv.style.display = "block";
+          btnEnviar.disabled = false;
+          btnEnviar.textContent = "Enviar";
+          return;
+        }
+
+        // Validar formato de email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(correo)) {
+          errorDiv.textContent = "❌ Por favor, ingresa un correo válido";
+          errorDiv.style.display = "block";
+          btnEnviar.disabled = false;
+          btnEnviar.textContent = "Enviar";
+          return;
+        }
+
+        // Preparar datos para EmailJS
+        const templateParams = {
+          nombre: nombre,
+          correo: correo,
+          mensaje: mensaje
+        };
+
+        // Enviar correo con EmailJS
+        emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams)
+          .then(function(response) {
+            console.log("✅ Correo enviado:", response);
+            
+            // Mostrar mensaje de éxito
+            confirmacion.style.display = "block";
+            errorDiv.style.display = "none";
+            
+            // Limpiar formulario
+            form.reset();
+            
+            // Restaurar botón
+            btnEnviar.disabled = false;
+            btnEnviar.textContent = "Enviar";
+            
+            // Ocultar mensaje de éxito después de 5 segundos
+            setTimeout(() => {
+              confirmacion.style.display = "none";
+            }, 5000);
+          })
+          .catch(function(error) {
+            console.error("❌ Error al enviar:", error);
+            
+            // Mostrar mensaje de error
+            errorDiv.textContent = "❌ Error al enviar. Por favor, intenta de nuevo.";
+            errorDiv.style.display = "block";
+            confirmacion.style.display = "none";
+            
+            // Restaurar botón
+            btnEnviar.disabled = false;
+            btnEnviar.textContent = "Enviar";
+          });
+      });
+    });
+  </script>
+  <!-- ========================================================== -->
+
+  <script src="js/site.js"></script><script src="js/contacto.js"></script>
+</body>
+</html>
